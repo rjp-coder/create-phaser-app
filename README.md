@@ -4,7 +4,7 @@ Boilerplate code for game development using phaser. Includes webpack and cordova
 
 ##Getting Started
 
-1. Clone the repo <code>git clone [url]</code>
+1. Clone the repo <code>git clone https://github.com/rjp-coder/create-phaser-app.git</code>
 
 2. Install dependencies <code>npm install</code>
 
