@@ -1,0 +1,18 @@
+# create-phaser-app
+
+Boilerplate code for game development using phaser. Includes webpack and cordova.
+
+##Getting Started
+
+1. Clone the repo <code>git clone [url]</code>
+
+2. Install dependencies <code>npm install</code>
+
+3: Navigate to cordova project <code>cd cordova-plugin-webpack-example</code>
+
+4: build the project using cordova <code> cordova build </code>
+
+5: Run the project using cordova <code> cordova run -- --livereload </code>
+
+This should open  a webpage which has the Cordova "Device Ready" splash screen, and the Phaser Title Screen as the background
+ 
