@@ -16,3 +16,4 @@ Boilerplate code for game development using phaser. Includes webpack and cordova
 
 This should open  a webpage which has the Cordova "Device Ready" splash screen, and the Phaser Title Screen as the background
  
+![Image of Cordova App with phaser background](./WorkingScreenshot.png?raw=true "Working Phaser project")
