@@ -5,3 +5,9 @@
  * if (!(this instanceof Phaser.Scene)) throw (THISAINTASCENE); 
  */
 export const THISAINTASCENE = "function called with a this object that is not an instance of a scene";
+
+export const getCentre = function (sceneObj){
+    const x = sceneObj.cameras.main.worldView.x + sceneObj.cameras.main.width / 2;
+    const y = sceneObj.cameras.main.worldView.y + sceneObj.cameras.main.height / 2;
+    return {x,y}
+}
