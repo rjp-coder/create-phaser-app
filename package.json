@@ -1,0 +1,35 @@
+{
+  "name": "cordova.plugin.webpack.example",
+  "displayName": "CordovaPluginWebpackExample",
+  "version": "1.0.0",
+  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "main": "index.js",
+  "scripts": {
+    "start": "cordova run  -- --livereload",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Apache Cordova Team",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "cordova-browser": "^6.0.0",
+    "cordova-plugin-webpack": "^1.0.5",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.3"
+  },
+  "cordova": {
+    "platforms": [
+      "browser"
+    ],
+    "plugins": {
+      "cordova-plugin-webpack": {}
+    }
+  },
+  "dependencies": {
+    "-": "^0.0.1",
+    "phaser": "^3.60.0"
+  }
+}
