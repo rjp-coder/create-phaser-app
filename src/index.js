@@ -22,10 +22,13 @@
 
 import game from "./game.js"
 document.addEventListener('deviceready', onDeviceReady, false);
+alert("Ready?");
 
 function onDeviceReady() {
     // Cordova is now initialized. Have fun!
-
+    alert("Hey");
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
+    document.getElementById('cordovaSplashScreen').classList.add('ready');
+    document.getElementById('cordovaSplashScreen').remove();
 }

@@ -31,6 +31,7 @@ const startScene = {
 
 let config = {
     type: Phaser.AUTO,
+    parent: "canvasWrapper",
     width: 400,
     height: 900, //for mobile phones, a 4/9 ratio is quite useful
     physics: {
@@ -42,6 +43,6 @@ let config = {
     scene: [startScene,classBasedScene,functionBasedScene]
 };
 
-//const game = new Phaser.Game(config);
+const game = new Phaser.Game(config);
 
-//export default game;
+export default game;
