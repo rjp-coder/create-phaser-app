@@ -11,7 +11,7 @@ export default class Scene3 extends Phaser.Scene {
 
   create() {
     const { width, height } = getBounds(this);
-    this.matter.world.setBounds(0, 0, width, height, 32, true, true, false, true);
+    this.matter.world.setBounds(0, 0, width, height, 16, true, true, false, true);
     for (let i = 0; i < 64; i++) {
       const ball = this.matter.add.image(
         Phaser.Math.Between(32, width),

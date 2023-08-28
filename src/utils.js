@@ -32,7 +32,7 @@ export const fitToScreen = function (image,scene){
 }
 
 export const displayDebugInfo = function(scene){
-    var style = { font: "20pt Arial", fill: "#000000" };
+    var style = { font: "20pt Arial", fill: "#ffffff" };
     const {width,height} = getBounds(scene);
     let deviceString = `Device::Height:${Math.round(height)},Width:${Math.round(width)}`;
     let canvasString = `Canvas::Height:${gameHeight},Width:${gameWidth}`;
@@ -42,11 +42,11 @@ export const displayDebugInfo = function(scene){
 }
 
 export const showGrid = function(scene){
-    const g2 = scene.add.grid(0,0, gameWidth, gameHeight, 32, 64, 0x00b9f2,0.2).setAltFillStyle(0x016fce,0.2).setOutlineStyle(0x00ff00,0.5);
+    const g2 = scene.add.grid(0,0, gameWidth, gameHeight, 32, 64).setOutlineStyle(0x00ff00,0.5);
     g2.setOrigin(0,0);
     fitToScreen(g2,scene);
 }
 
 
 export const gameWidth = 320;
-export const gameHeight = 568;
+export const gameHeight = 576; //this is incredibly close to iphone 568, but is a multiple of 32.
