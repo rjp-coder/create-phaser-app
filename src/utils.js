@@ -6,8 +6,18 @@
  */
 export const THISAINTASCENE = "function called with a this object that is not an instance of a scene";
 
-export const getCentre = function (sceneObj){
-    const x = sceneObj.cameras.main.worldView.x + sceneObj.cameras.main.width / 2;
-    const y = sceneObj.cameras.main.worldView.y + sceneObj.cameras.main.height / 2;
-    return {x,y}
+/** gets useful properties of the current scene */
+export const getBounds = function (sceneObj){
+    const width = sceneObj.cameras.main.width;
+    const height = sceneObj.cameras.main.height;
+    const cx = sceneObj.cameras.main.worldView.x + width / 2;
+    const cy = sceneObj.cameras.main.worldView.y + height / 2;
+    return {cx,cy,width,height}
+}
+
+export const stretchImage = function (image,scene){
+    let scaleX = scene.cameras.main.width / image.width
+    let scaleY = scene.cameras.main.height / image.height
+    let scale = Math.max(scaleX, scaleY)
+    image.setScale(scale).setScrollFactor(0)
 }

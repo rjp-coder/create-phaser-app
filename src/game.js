@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import classBasedScene from "./classBasedScene"
 import functionBasedScene from "./functionBasedScene"
-import { THISAINTASCENE, getCentre } from "./utils";
+import { THISAINTASCENE, getBounds, stretchImage } from "./utils";
 
 const startScene = {
     preload(){
@@ -11,10 +11,11 @@ const startScene = {
     create() {
         if (!(this instanceof Phaser.Scene)) throw (THISAINTASCENE); 
         // Defining variables
-        this.add.image(400, 300, 'sky');
+        const bkg = this.add.image(getBounds(this).cx, getBounds(this).cy, 'sky');
+        stretchImage(bkg,this);
         var style = { font: "4rem Arial", fill: "#ffffff" };
-        var x = 32, y = 32;
-        var text = this.add.text(getCentre(this).x, y, "Click to start", style);
+        var y = 32;
+        var text = this.add.text(getBounds(this).cx, y, "Click to start", style);
         text.setOrigin(0.5,0)
         this.input.on("pointerdown",()=>{
             let splash = document.getElementById("cordovaSplashScreen");
@@ -28,8 +29,9 @@ const startScene = {
 let config = {
     type: Phaser.AUTO,
     parent: "canvasWrapper",
-    width: 400,
-    height: 900, //for mobile phones, a 4/9 ratio is quite useful
+    scaleMode: Phaser.Scale.RESIZE,
+    width: 320,
+    height: 568, //for mobile phones, a 4/9 ratio is quite useful
     physics: {
         default: 'matter',
         arcade: {

@@ -1,3 +1,5 @@
+import { getBounds } from "./utils";
+
 export default class Scene3 extends Phaser.Scene {
   constructor() {
     super({ key: "classBasedScene" });
@@ -8,10 +10,11 @@ export default class Scene3 extends Phaser.Scene {
   }
 
   create() {
-    this.matter.world.setBounds(0, 0, 400, 900, 32, true, true, false, true);
+    const {width, height} =  getBounds(this)
+    this.matter.world.setBounds(0, 0, width, height, 32, true, true, false, true);
     for (let i = 0; i < 64; i++) {
       const ball = this.matter.add.image(
-        Phaser.Math.Between(32, 368),
+        Phaser.Math.Between(32, width),
         Phaser.Math.Between(-600, 0),
         "ball1"
       );

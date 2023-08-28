@@ -1,4 +1,4 @@
-import {THISAINTASCENE} from './utils'
+import {THISAINTASCENE, getBounds} from './utils'
 
 const scene5Props = {
   preload() {
@@ -10,10 +10,11 @@ const scene5Props = {
   create() {
     //this tricks the ts-check on vs-code into appying correct typing within this function.
     if (!(this instanceof Phaser.Scene)) throw (THISAINTASCENE);
-    this.matter.world.setBounds(0, 0, 400, 900, 32, true, true, false, true);
+    const {width, height} =  getBounds(this)
+    this.matter.world.setBounds(0, 0, width, height, 32, true, true, false, true);
     for (let i = 0; i < 64; i++) {
       const ball = this.matter.add.image(
-        Phaser.Math.Between(32, 368),
+        Phaser.Math.Between(32, width),
         Phaser.Math.Between(-600, 0),
         "ball1"
       );
