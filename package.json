@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cordova run  -- --livereload",
+    "android": "cordova run android -- --livereload",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -16,6 +17,7 @@
   "devDependencies": {
     "cordova-android": "^10.1.2",
     "cordova-browser": "^6.0.0",
+    "cordova-plugin-cleartext": "^1.0.0",
     "cordova-plugin-webpack": "^1.0.5",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12",
@@ -27,7 +29,8 @@
       "android"
     ],
     "plugins": {
-      "cordova-plugin-webpack": {}
+      "cordova-plugin-webpack": {},
+      "cordova-plugin-cleartext": {}
     }
   },
   "dependencies": {
