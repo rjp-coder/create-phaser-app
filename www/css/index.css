@@ -50,7 +50,7 @@ body {
         background-position:50% 65%;
 }
 
-#cordovaSplashScreen.ready {
+#cordovaSplashScreen {
     position:absolute;
 }
 
