@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import classBasedScene from "./classBasedScene"
 import functionBasedScene from "./functionBasedScene"
-import { THISAINTASCENE, getBounds, stretchImage } from "./utils";
+import { THISAINTASCENE, getBounds, stretchImage, gameHeight, gameWidth } from "./utils";
 
 const startScene = {
     preload(){
@@ -30,8 +30,8 @@ let config = {
     type: Phaser.AUTO,
     parent: "canvasWrapper",
     scaleMode: Phaser.Scale.RESIZE,
-    width: 320,
-    height: 568, //for mobile phones, a 4/9 ratio is quite useful
+    width: gameWidth,
+    height: gameHeight, //for mobile phones, a 4/9 ratio is quite useful
     physics: {
         default: 'matter',
         arcade: {

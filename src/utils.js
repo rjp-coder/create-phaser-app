@@ -16,8 +16,22 @@ export const getBounds = function (sceneObj){
 }
 
 export const stretchImage = function (image,scene){
+    //TODO get ratio of image size to game size/ 
+    //then get ratio of image size to scene size. 
+    //then divide by game size and multiply by scene size
+    //or just doing the last step alone should be enough?
     let scaleX = scene.cameras.main.width / image.width
     let scaleY = scene.cameras.main.height / image.height
     let scale = Math.max(scaleX, scaleY)
     image.setScale(scale).setScrollFactor(0)
 }
+
+export const stretchImageToGame = function (image){
+    let scaleX = gameWidth / image.width
+    let scaleY = gameHeight / image.height
+    let scale = Math.max(scaleX, scaleY)
+    image.setScale(scale).setScrollFactor(0);
+}
+
+export const gameWidth = 320;
+export const gameHeight = 568;
