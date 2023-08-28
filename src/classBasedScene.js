@@ -1,4 +1,4 @@
-import { getBounds } from "./utils";
+import { displayDebugInfo, getBounds, scaleImageToScreen, showGrid } from "./utils";
 
 export default class Scene3 extends Phaser.Scene {
   constructor() {
@@ -10,7 +10,7 @@ export default class Scene3 extends Phaser.Scene {
   }
 
   create() {
-    const {width, height} =  getBounds(this)
+    const { width, height } = getBounds(this);
     this.matter.world.setBounds(0, 0, width, height, 32, true, true, false, true);
     for (let i = 0; i < 64; i++) {
       const ball = this.matter.add.image(
@@ -18,6 +18,9 @@ export default class Scene3 extends Phaser.Scene {
         Phaser.Math.Between(-600, 0),
         "ball1"
       );
+      scaleImageToScreen(ball, this);
+      showGrid(this);
+      displayDebugInfo(this);
       // the below line should have an error if you have correct type-checking set up. The error should say
       // expected 1-2 arguments but got 0.
       ball.setCircle();

@@ -15,23 +15,38 @@ export const getBounds = function (sceneObj){
     return {cx,cy,width,height}
 }
 
-export const stretchImage = function (image,scene){
-    //TODO get ratio of image size to game size/ 
-    //then get ratio of image size to scene size. 
-    //then divide by game size and multiply by scene size
-    //or just doing the last step alone should be enough?
-    let scaleX = scene.cameras.main.width / image.width
-    let scaleY = scene.cameras.main.height / image.height
+export const scaleImageToScreen = function (image,scene){
+    const {width,height} =  scene.cameras.main;
+    let scaleX =  width /gameWidth;
+    let scaleY =  height/gameHeight;
     let scale = Math.max(scaleX, scaleY)
-    image.setScale(scale).setScrollFactor(0)
+    image.setScale(scaleX,scaleY).setScrollFactor(0)
 }
 
-export const stretchImageToGame = function (image){
-    let scaleX = gameWidth / image.width
-    let scaleY = gameHeight / image.height
+export const fitToScreen = function (image,scene){
+    const {width,height} =  scene.cameras.main;
+    let scaleX = width / image.width;
+    let scaleY = height / image.height;
     let scale = Math.max(scaleX, scaleY)
-    image.setScale(scale).setScrollFactor(0);
+    image.setScale(scaleX,scaleY).setScrollFactor(0)
 }
+
+export const displayDebugInfo = function(scene){
+    var style = { font: "20pt Arial", fill: "#000000" };
+    const {width,height} = getBounds(scene);
+    let deviceString = `Device::Height:${Math.round(height)},Width:${Math.round(width)}`;
+    let canvasString = `Canvas::Height:${gameHeight},Width:${gameWidth}`;
+    let scaleString = `ScaleFactor::Y:${Math.round(height*100/gameHeight)/100},X:${Math.round(width*100/gameWidth)/100}`;
+    let text = scene.add.text(32, height*0.9, [deviceString,canvasString,scaleString].join("\n"), style);
+    text.setOrigin(0,1);
+}
+
+export const showGrid = function(scene){
+    const g2 = scene.add.grid(0,0, gameWidth, gameHeight, 32, 64, 0x00b9f2,0.2).setAltFillStyle(0x016fce,0.2).setOutlineStyle(0x00ff00,0.5);
+    g2.setOrigin(0,0);
+    fitToScreen(g2,scene);
+}
+
 
 export const gameWidth = 320;
 export const gameHeight = 568;
