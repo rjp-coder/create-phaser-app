@@ -18,9 +18,10 @@
     under the License.
 -->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <!--
+
+<head>
+    <meta charset="utf-8">
+    <!--
         Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
             https://cordova.apache.org/docs/en/latest/
         Some notes:
@@ -29,21 +30,24 @@
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
 
-        <!-- Secure CSP: Uncomment and improve-->
-        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
-        
-        <!-- Easy Content-Security-Policy: Delete and replace with above -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob: phaser.io *.phaser.io 'unsafe-eval' data:;" />
+    <!-- Secure CSP: Uncomment and improve-->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
 
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <meta name="color-scheme" content="light dark">
-        <link rel="stylesheet" href="css/index.css">
-        <link rel="icon" type="image/x-icon" href="favicon_24.ico">
-        <title>My Cordova Phaser App</title>
-    </head>
-    <body>
+    <!-- Easy Content-Security-Policy: Delete and replace with above -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' data: blob: phaser.io *.phaser.io 'unsafe-eval' data:;" />
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" type="image/x-icon" href="favicon_24.ico">
+    <title>My Cordova Phaser App</title>
+</head>
+
+<body>
+    <main id="canvasWrapper">
         <div id="cordovaSplashScreen" class="app">
             <h1>Apache Cordova</h1>
             <div id="deviceready" class="blink">
@@ -51,7 +55,9 @@
                 <p class="event received">Device is Ready</p>
             </div>
         </div>
-        <script type="text/html" src="cordova.js"></script>
-        <script src="index.bundle.js"></script>
-    </body>
+    </main>
+    <script type="text/html" src="cordova.js"></script>
+    <script src="index.bundle.js"></script>
+</body>
+
 </html>
