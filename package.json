@@ -15,6 +15,9 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "devDependencies": {
+    "@babel/core": "^7.22.11",
+    "@babel/preset-env": "^7.22.10",
+    "babel-loader": "^7.1.5",
     "cordova-android": "^10.1.2",
     "cordova-browser": "^6.0.0",
     "cordova-plugin-cleartext": "^1.0.0",
