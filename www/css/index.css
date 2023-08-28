@@ -55,8 +55,12 @@ body {
 }
 
 /* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-
+@media only screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    #canvasWrapper{
+        margin:auto;
+        max-width:640px;
+        background-color:yellow;
+    }
 }
 
 h1 {
