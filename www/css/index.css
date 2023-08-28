@@ -16,8 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-* {
+ * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+html {
+    font-size:10px;
 }
 
 body {
@@ -27,7 +31,6 @@ body {
     background-color:#E4E4E4;
     background-image:linear-gradient(to bottom, #A7A7A7 0%, #E4E4E4 51%);
     font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
-    font-size:12px;
     height:100vh;
     margin:0px;
     padding:0px;
@@ -39,37 +42,29 @@ body {
 
 /* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:400px;
-    top:300px;
-    height:50px;                   /* text area height */
+    background:url(../img/logo.png) no-repeat center; /* 170px x 200px */
+    height:288px;                   /* text area height */
     width:225px;                   /* text area width */
     text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
+    background-color: red;
+        background-position:50% 65%;
 }
 
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    .app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-    }
+
 }
 
 h1 {
-    font-size:24px;
+    font-size:2.4rem;
     font-weight:normal;
-    margin:0px;
     overflow:visible;
     padding:0px;
     text-align:center;
     text-shadow: 2px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
-    color:#fff
+    color:#fff;
+    margin-top: 3rem;
+    margin-bottom: 0;
 }
 
 .event {
@@ -93,6 +88,20 @@ h1 {
 
 #deviceready.ready .event.listening { display: none; }
 #deviceready.ready .event.received { display: block; }
+
+#deviceready {
+    transform:translateY(160px);        
+}
+
+#canvasWrapper {
+    background-color:#4B946A;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
 
 @keyframes fade {
     from { opacity: 1.0; }
