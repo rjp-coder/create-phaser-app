@@ -8,14 +8,15 @@ export default class Scene3 extends Phaser.Scene {
   }
 
   create() {
-    this.matter.world.setBounds(0, 0, 800, 600, 32, true, true, false, true);
-
+    this.matter.world.setBounds(0, 0, 400, 900, 32, true, true, false, true);
     for (let i = 0; i < 64; i++) {
       const ball = this.matter.add.image(
-        Phaser.Math.Between(100, 700),
+        Phaser.Math.Between(32, 368),
         Phaser.Math.Between(-600, 0),
         "ball1"
       );
+      // the below line should have an error if you have correct type-checking set up. The error should say
+      // expected 1-2 arguments but got 0.
       ball.setCircle();
       ball.setFriction(0.005);
       ball.setBounce(1);

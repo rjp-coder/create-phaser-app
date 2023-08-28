@@ -12,19 +12,15 @@ const startScene = {
         if (!(this instanceof Phaser.Scene)) throw (THISAINTASCENE); 
         // Defining variables
         this.add.image(400, 300, 'sky');
-        var style = { font: "90px Arial", fill: "#ffffff" };
+        var style = { font: "4rem Arial", fill: "#ffffff" };
         var x = 32, y = 32;
-        const screenCenterX = this.cameras.main.worldView.x + this.cameras.main.width / 2;
-        const screenCenterY = this.cameras.main.worldView.y + this.cameras.main.height / 2;
         var text = this.add.text(getCentre(this).x, y, "Click to start", style);
         text.setOrigin(0.5,0)
-        //text.anchor.setTo(0.5, 0.5); 
         this.input.on("pointerdown",()=>{
             let splash = document.getElementById("cordovaSplashScreen");
             splash && splash.remove();
             text.setText("You clicked!")
             this.scene.start("functionBasedScene") ;
-    
         })
     }
 }
