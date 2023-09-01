@@ -1,3 +1,4 @@
+import * as dat from 'dat.gui';
 /** this is used in combination with an "instanceof" check to trick the ts-check in vs code IDE into 
  *  understanding that the typing of *this* inside the function should always be a Phaser.Scene.
  * 
@@ -32,13 +33,23 @@ export const fitToScreen = function (image,scene){
 }
 
 export const displayDebugInfo = function(scene){
-    var style = { font: "20pt Arial", fill: "#ffffff" };
+    const gui = new dat.GUI();
+    const f1 = gui.addFolder('DebugInfo');
+    const cam = gui.addFolder('Camera');
+    const camera = scene.cameras.main;
+    f1.add(cordova,'platformId').listen();
+    cam.add(camera, 'x').listen();
+    cam.add(camera, 'y').listen();
+    cam.add(camera, 'height').listen();
+    cam.add(camera, 'width').listen();
+    cam.add(camera, 'scrollX').listen();
+    cam.add(camera, 'scrollY').listen();
     const {width,height} = getBounds(scene);
-    let deviceString = `Device::Height:${Math.round(height)},Width:${Math.round(width)}`;
-    let canvasString = `Canvas::Height:${gameHeight},Width:${gameWidth}`;
-    let scaleString = `ScaleFactor::Y:${Math.round(height*100/gameHeight)/100},X:${Math.round(width*100/gameWidth)/100}`;
-    let text = scene.add.text(32, height*0.9, [deviceString,canvasString,scaleString].join("\n"), style);
-    text.setOrigin(0,1);
+    let device = `Height:${Math.round(height)},Width:${Math.round(width)}`;
+    let canvas = `Height:${gameHeight},Width:${gameWidth}`;
+    let scale = `Y:${Math.round(height*100/gameHeight)/100},X:${Math.round(width*100/gameWidth)/100}`;
+    let scaleInfo = {device,canvas,scale}
+    Object.keys(scaleInfo).forEach(k=>f1.add(scaleInfo,k));
 }
 
 export const showGrid = function(scene){

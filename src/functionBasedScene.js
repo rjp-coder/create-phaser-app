@@ -18,9 +18,7 @@ const scene5Props = {
         Phaser.Math.Between(-600, 0),
         "ball1"
       );
-      scaleImageToScreen(ball,this);
       showGrid(this);
-      displayDebugInfo(this);
       // the below line should have an error if you have correct type-checking set up. The error should say
       // expected 1-2 arguments but got 0.
       ball.setCircle();

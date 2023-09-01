@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import classBasedScene from "./classBasedScene"
 import functionBasedScene from "./functionBasedScene"
-import { THISAINTASCENE, getBounds, fitToScreen, gameHeight, gameWidth, scaleImageToScreen } from "./utils";
+import { THISAINTASCENE, getBounds, fitToScreen, gameHeight, gameWidth, scaleImageToScreen, displayDebugInfo } from "./utils";
 
 const startScene = {
     preload(){
@@ -12,11 +12,11 @@ const startScene = {
         if (!(this instanceof Phaser.Scene)) throw (THISAINTASCENE); 
         // Defining variables
         const bkg = this.add.image(getBounds(this).cx, getBounds(this).cy, 'sky');
-        fitToScreen(bkg,this);
         var style = { font: "4rem Arial", fill: "#ffffff" };
         var y = 32;
         var text = this.add.text(getBounds(this).cx, y, "Click to start", style);
-        text.setOrigin(0.5,0)
+        text.setOrigin(0.5,0);
+        displayDebugInfo(this);
         this.input.on("pointerdown",()=>{
             let splash = document.getElementById("cordovaSplashScreen");
             splash && splash.remove();
