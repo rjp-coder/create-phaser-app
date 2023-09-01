@@ -20,12 +20,23 @@
 // Wait for the deviceready event before using any of Cordova's device APIs.
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
 
-import game from "./game.js"
 document.addEventListener('deviceready', onDeviceReady, false);
+
+let t = setTimeout(neverMindThen,10000);
 
 function onDeviceReady() {
     // Cordova is now initialized. Have fun!
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
+    clearTimeout(t)
     document.getElementById('deviceready').classList.add('ready');
     document.getElementById('cordovaSplashScreen').remove();
+    if (cordova.platformId==="browser"){
+        document.getElementById('canvasWrapper').classList.add('browser');
+    }
+    require('./game.js');
+}
+
+function neverMindThen() {
+    alert('failed to connect to device. Going to run the game anyway.'); 
+    require('./game.js')
 }

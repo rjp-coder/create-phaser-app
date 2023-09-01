@@ -54,9 +54,9 @@ body {
     position:absolute;
 }
 
-/* Landscape layout (with min-width) */
+/* Landscape layout Browser only, forces vertical phone layout with big margins. (with min-width) */
 @media only screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    #canvasWrapper{
+    #canvasWrapper.browser{
         margin:auto;
         max-width:640px;
         background-color:yellow;
