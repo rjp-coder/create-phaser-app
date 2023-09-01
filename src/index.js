@@ -22,7 +22,7 @@
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
-let t = setTimeout(neverMindThen,10000);
+let t = setTimeout(neverMindThen,5000);
 
 function onDeviceReady() {
     // Cordova is now initialized. Have fun!
@@ -38,5 +38,6 @@ function onDeviceReady() {
 
 function neverMindThen() {
     alert('failed to connect to device. Going to run the game anyway.'); 
-    require('./game.js')
+    require('./game.js');
+    document.getElementById('cordovaSplashScreen').remove();
 }
