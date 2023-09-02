@@ -1,20 +1,16 @@
 import {
   THISAINTASCENE,
   displayDebugInfo,
-  fitToScreen,
+
   canvasHeight,
   canvasWidth,
   getBounds,
-  scaleImageToScreen,
+
   showFancyGrid,
-  showGrid,
-  stretchImage,
-  stretchImageToGame,
+
   makeCameraDraggable,
   showMockGui,
 } from "./utils";
-import {HealthBar} from './healthbar.js';
-import {guiText as guiStyle}   from "./textStyles.js";
 
 const scene5Props = {
   preload() {
@@ -26,12 +22,18 @@ const scene5Props = {
   create() {
     //this tricks the ts-check on vs-code into appying correct typing within this function.
     if (!(this instanceof Phaser.Scene)) throw THISAINTASCENE;
-    let left=0, top=0, right=canvasWidth*3, bottom=canvasHeight;
-    this.cameras.main.setBounds(left, top-200, right, bottom+400); //this allows 200px of 'dead' space
-    const {cy} = getBounds(this);
+    let left = 0,
+      top = 0,
+      right = canvasWidth * 3,
+      bottom = canvasHeight;
+    this.cameras.main.setBounds(left, top - 200, right, bottom + 400); //this allows 200px of 'dead' space
+    const { cy } = getBounds(this);
     this.cameras.main.centerOn(0, cy);
     this.matter.world.setBounds(
-      left,top,right,bottom,
+      left,
+      top,
+      right,
+      bottom,
       96,
       true,
       true,

@@ -73,7 +73,18 @@ export const showFancyGrid = function(scene){
 }
 
 export const makeCameraDraggable = function(scene){
+    // var controlConfig = {
+    //     camera: scene.cameras.main,
+    //     zoomIn: scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q),
+    //     zoomOut: scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E),
+    //     zoomSpeed: 0.02,
+    //     acceleration: 0.06,
+    //     drag: 0.0005,
+    //     maxSpeed: 1.0
+    // };
+    
     const cam = scene.cameras.main;
+    // scene.controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
     if (! (cam instanceof Phaser.Cameras.Scene2D.Camera) ) throw THISAINTASCENE;
     cam.dragTime=0;
     scene.input.mousePointer.motionFactor = 0.5;
