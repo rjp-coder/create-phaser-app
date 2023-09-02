@@ -26,7 +26,10 @@ const scene5Props = {
   create() {
     //this tricks the ts-check on vs-code into appying correct typing within this function.
     if (!(this instanceof Phaser.Scene)) throw THISAINTASCENE;
-    let top=0, left=0, bottom=canvasHeight, right=canvasWidth*3
+    let left=0, top=0, right=canvasWidth*3, bottom=canvasHeight;
+    this.cameras.main.setBounds(left, top-200, right, bottom+400); //this allows 200px of 'dead' space
+    const {cy} = getBounds(this);
+    this.cameras.main.centerOn(0, cy);
     this.matter.world.setBounds(
       left,top,right,bottom,
       96,

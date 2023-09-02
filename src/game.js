@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import classBasedScene from "./classBasedScene"
 import functionBasedScene from "./functionBasedScene"
 import { THISAINTASCENE, getBounds, fitToScreen, canvasHeight, canvasWidth, scaleImageToScreen, displayDebugInfo } from "./utils";
-
+import {title as titleStyle} from './textStyles';
 const startScene = {
     preload(){
         if (!(this instanceof Phaser.Scene)) throw (THISAINTASCENE); //trick vs code Ts-check into typing "this" correctly
@@ -12,9 +12,8 @@ const startScene = {
         if (!(this instanceof Phaser.Scene)) throw (THISAINTASCENE); 
         // Defining variables
         const bkg = this.add.image(getBounds(this).cx, getBounds(this).cy, 'sky');
-        var style = { font: "4rem Arial", fill: "#ffffff" };
         var y = 32;
-        var text = this.add.text(getBounds(this).cx, y, "Click to start", style);
+        var text = this.add.text(getBounds(this).cx, y, "Click to start", titleStyle);
         text.setOrigin(0.5,0);
         let gui = displayDebugInfo(this);
         this.input.on("pointerdown",()=>{

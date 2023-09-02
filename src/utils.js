@@ -52,6 +52,7 @@ export const displayDebugInfo = function(scene){
     let scale = `Y:${Math.round(height*100/canvasHeight)/100},X:${Math.round(width*100/canvasWidth)/100}`;
     let scaleInfo = {device,canvas,scale}
     Object.keys(scaleInfo).forEach(k=>f1.add(scaleInfo,k));
+    gui.close();
     // const console = gui.addFolder('Console');
     // console.add(globalThis.log,'0').listen();
     // console.add(globalThis.log,'1').listen();
@@ -77,7 +78,7 @@ export const makeCameraDraggable = function(scene){
     cam.dragTime=0;
     scene.input.mousePointer.motionFactor = 0.5;
     scene.input.pointer1.motionFactor = 0.5;
-    let gracePeriod = 4; //wait this many frames before allowing drag.
+    let gracePeriod = 2; //wait this many frames before allowing drag.
     scene.input.on("pointermove", function (p) {
       if (!p.isDown) return;
       cam.dragTime++;
