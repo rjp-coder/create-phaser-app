@@ -71,16 +71,30 @@ export const showFancyGrid = function(scene){
 
 export const makeCameraDraggable = function(scene){
     const cam = scene.cameras.main;
-    scene.input.mousePointer.motionFactor = 0.6;
-    scene.input.pointer1.motionFactor = 0.6;
+    if (! (cam instanceof Phaser.Cameras.Scene2D.Camera) ) throw THISAINTASCENE;
+    cam.dragTime=0;
+    scene.input.mousePointer.motionFactor = 0.5;
+    scene.input.pointer1.motionFactor = 0.5;
+    let gracePeriod = 4; //wait this many frames before allowing drag.
     scene.input.on("pointermove", function (p) {
-    if (!p.isDown) return;
-
-    const { x, y } = p.velocity;
-    cam.scrollX -= x / 1;
-    cam.scrollY -= y / 1;
-
-})
+      if (!p.isDown) return;
+      cam.dragTime++;
+      if (cam.dragTime > gracePeriod) {
+        const { x, y } = p.velocity;
+        cam.scrollX -= x / 1;
+        cam.scrollY -= y / 1;
+      }
+    });
+    scene.input.on(
+      "pointerup",
+      function (pointer) {
+        console.log(cam.dragTime);
+        var touchX = pointer.x;
+        var touchY = pointer.y;
+        cam.dragTime=0;
+      },
+      scene
+    );
     
 }
 
