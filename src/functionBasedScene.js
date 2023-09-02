@@ -11,7 +11,10 @@ import {
   stretchImage,
   stretchImageToGame,
   makeCameraDraggable,
+  showMockGui,
 } from "./utils";
+import {HealthBar} from './healthbar.js';
+import {guiText as guiStyle}   from "./textStyles.js";
 
 const scene5Props = {
   preload() {
@@ -23,11 +26,9 @@ const scene5Props = {
   create() {
     //this tricks the ts-check on vs-code into appying correct typing within this function.
     if (!(this instanceof Phaser.Scene)) throw THISAINTASCENE;
+    let top=0, left=0, bottom=canvasHeight, right=canvasWidth*3
     this.matter.world.setBounds(
-      0,
-      0,
-      canvasWidth * 3,
-      canvasHeight,
+      left,top,right,bottom,
       96,
       true,
       true,
@@ -50,6 +51,7 @@ const scene5Props = {
     showFancyGrid(this);
     makeCameraDraggable(this);
     displayDebugInfo(this);
+    showMockGui(this);
   },
 };
 

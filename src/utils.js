@@ -1,4 +1,6 @@
 import * as dat from 'dat.gui';
+import { HealthBar } from './healthbar';
+import {guiText as guiStyle} from './textStyles';
 /** this is used in combination with an "instanceof" check to trick the ts-check in vs code IDE into 
  *  understanding that the typing of *this* inside the function should always be a Phaser.Scene.
  * 
@@ -107,6 +109,13 @@ export const hijackConsole = function(){
           clog(...args)
         }
       }
+}
+
+export const showMockGui = function(scene){
+    var guiBox = scene.add.rectangle(0,0,300,80,0x000000,0.5).setScrollFactor(0);
+    var text = scene.add.text(0, 16, "HP", guiStyle);
+    text.setScrollFactor(0,0);
+    scene.hp = new HealthBar(scene, 24, 16);
 }
 
 
