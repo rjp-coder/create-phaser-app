@@ -44,7 +44,7 @@ const scene5Props = {
         Phaser.Math.Between(-600, 0),
         "ball1"
       );
-      ball.setTintFill(Phaser.Math.Between(0, 16777215));
+      ball.setTint(Phaser.Math.Between(0, 16777215));
       // the below line should have an error if you have correct type-checking set up. The error should say
       // expected 1-2 arguments but got 0.
       ball.setCircle();
