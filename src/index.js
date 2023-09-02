@@ -22,10 +22,9 @@
 
 import { hijackConsole } from './utils.js';
 
-document.addEventListener('deviceready', onDeviceReady, false);
 
+document.addEventListener("deviceready", onDeviceReady, false);
 let t = setTimeout(neverMindThen,10000);
-
 hijackConsole();
 
 function onDeviceReady() {
