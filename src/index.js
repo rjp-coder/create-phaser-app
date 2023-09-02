@@ -24,7 +24,7 @@ import { hijackConsole } from './utils.js';
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
-let t = setTimeout(neverMindThen,5000);
+let t = setTimeout(neverMindThen,10000);
 
 hijackConsole();
 
@@ -41,7 +41,9 @@ function onDeviceReady() {
 }
 
 function neverMindThen() {
-    alert('failed to connect to device. Going to run the game anyway.'); 
-    require('./game.js');
+    let choice = confirm('failed to connect to device. Run the game without connecting?.'); 
+    if (choice){
+        require('./game.js');
     document.getElementById('cordovaSplashScreen').remove();
+    }
 }
