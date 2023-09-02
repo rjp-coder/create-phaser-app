@@ -20,9 +20,13 @@
 // Wait for the deviceready event before using any of Cordova's device APIs.
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
 
+import { hijackConsole } from './utils.js';
+
 document.addEventListener('deviceready', onDeviceReady, false);
 
 let t = setTimeout(neverMindThen,5000);
+
+hijackConsole();
 
 function onDeviceReady() {
     // Cordova is now initialized. Have fun!

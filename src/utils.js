@@ -18,8 +18,8 @@ export const getBounds = function (sceneObj){
 
 export const scaleImageToScreen = function (image,scene){
     const {width,height} =  scene.cameras.main;
-    let scaleX =  width /gameWidth;
-    let scaleY =  height/gameHeight;
+    let scaleX =  width /canvasWidth;
+    let scaleY =  height/canvasHeight;
     let scale = Math.max(scaleX, scaleY)
     image.setScale(scaleX,scaleY).setScrollFactor(0)
 }
@@ -46,18 +46,55 @@ export const displayDebugInfo = function(scene){
     cam.add(camera, 'scrollY').listen();
     const {width,height} = getBounds(scene);
     let device = `Height:${Math.round(height)},Width:${Math.round(width)}`;
-    let canvas = `Height:${gameHeight},Width:${gameWidth}`;
-    let scale = `Y:${Math.round(height*100/gameHeight)/100},X:${Math.round(width*100/gameWidth)/100}`;
+    let canvas = `Height:${canvasHeight},Width:${canvasWidth}`;
+    let scale = `Y:${Math.round(height*100/canvasHeight)/100},X:${Math.round(width*100/canvasWidth)/100}`;
     let scaleInfo = {device,canvas,scale}
     Object.keys(scaleInfo).forEach(k=>f1.add(scaleInfo,k));
+    // const console = gui.addFolder('Console');
+    // console.add(globalThis.log,'0').listen();
+    // console.add(globalThis.log,'1').listen();
+    // console.add(globalThis.log,'2').listen();
+    return gui;
 }
 
 export const showGrid = function(scene){
-    const g2 = scene.add.grid(0,0, gameWidth, gameHeight, 32, 64).setOutlineStyle(0x00ff00,0.5);
-    g2.setOrigin(0,0);
-    fitToScreen(g2,scene);
+    const g = scene.add.grid(0,0, canvasWidth*3, canvasHeight, 32, 64).setOutlineStyle(0x00ff00,0.5);
+    g.setOrigin(0,0);
+    g.setDepth(-99)
+}
+
+export const showFancyGrid = function(scene){
+    const g = scene.add.grid(0,0, canvasWidth*3, canvasHeight, 32, 64,'0xff00cc').setAltFillStyle('0x00ffcc');
+    g.setOrigin(0,0);
+    g.setDepth(-99)
+}
+
+export const makeCameraDraggable = function(scene){
+    const cam = scene.cameras.main;
+    scene.input.mousePointer.motionFactor = 0.6;
+    scene.input.pointer1.motionFactor = 0.6;
+    scene.input.on("pointermove", function (p) {
+    if (!p.isDown) return;
+
+    const { x, y } = p.velocity;
+    cam.scrollX -= x / 1;
+    cam.scrollY -= y / 1;
+
+})
+    
+}
+
+export const hijackConsole = function(){
+    {
+        const clog = console.log.bind(console)
+        console.log = (...args) => {
+          if (!globalThis.log) globalThis.log = [];
+          globalThis.log.push(console);
+          clog(...args)
+        }
+      }
 }
 
 
-export const gameWidth = 320;
-export const gameHeight = 576; //this is incredibly close to iphone 568, but is a multiple of 32.
+export const canvasWidth = 320;
+export const canvasHeight = 576; //this is incredibly close to iphone 568, but is a multiple of 32.
